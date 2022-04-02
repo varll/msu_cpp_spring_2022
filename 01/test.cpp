@@ -113,6 +113,7 @@ TEST(TestALL, TestSmth){
 	p1 = allocator.alloc(100);
 
 	ASSERT_TRUE(p1 != nullptr);
+	ASSERT_EQ(allocator.get_offset(), 100);
 
 	allocator.makeAllocator(1);
 
