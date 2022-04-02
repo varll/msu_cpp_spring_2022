@@ -1,24 +1,19 @@
 #include "allocator.h"
 
-class Allocator
-{
-    size_t max_size = 0, offset = 0;
-    char* pointer = nullptr;
-public:
-    void makeAllocator(size_t maxSize)
+    void Allocator::makeAllocator(size_t maxSize)
     {
         if (max_size != 0)
         {
             max_size = 0;
             offset = 0;
-            delete(pointer);
+            delete[] pointer;
         }
         max_size = maxSize;
         pointer = new char[max_size];
         offset = 0;
     }
 
-    char* alloc(size_t size)
+    char* Allocator::alloc(size_t size)
     {
         if (offset + size > max_size)
             return nullptr;
@@ -29,29 +24,12 @@ public:
         return result;
     }
 
-    void reset()
+    void Allocator::reset()
     {
         offset = 0;
     }
 
-    size_t get_size()
+    Allocator::~Allocator()
     {
-        return max_size;
+        delete[] pointer;
     }
-
-    size_t get_offset()
-    {
-        return offset;
-    }
-
-    char* get_pointer()
-    {
-        return pointer;
-    }
-
-    ~Allocator()
-    {
-        delete(pointer);
-    }
-
-};
