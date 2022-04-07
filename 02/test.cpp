@@ -28,7 +28,7 @@ TEST(TestParser, TestNumbers){
     parser.SetDigitTokenCallback(digit_callback);
     parser.SetStringTokenCallback(string_callback);
     std::string test_text = "0 \t\t4\n\n23 234234 00124 18446744073709551615\t";
-    std::vector<uint64_t> test_out = {0ull ,4ull, 23ull, 234234ull, 124ul, 18446744073709551615ull};
+    std::vector<uint64_t> test_out = {0ull ,4ull, 23ull, 234234ull, 124ull, 18446744073709551615ull};
     parser.Parse(test_text);
 
     ASSERT_EQ(numbers.size(), 6);
