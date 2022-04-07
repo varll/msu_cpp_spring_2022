@@ -99,11 +99,13 @@ TEST(TestParser, TestEmptyText){
     parser.SetDigitTokenCallback(digit_callback);
     parser.SetStringTokenCallback(string_callback);
     std::string test_text = "";
-
     parser.Parse(test_text);
+    
     ASSERT_EQ(numbers.size(), 0);
     ASSERT_EQ(strings.size(), 0);
 
+    numbers.clear();
+    strings.clear();
 }
 
 
