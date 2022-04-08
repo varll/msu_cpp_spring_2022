@@ -11,7 +11,7 @@ test_bin: test.o parser.o
 test.o: test.cpp
 	$(CC) $(FLAGS) test.cpp
 
-parcer.o: parcer.cpp
+parser.o: parser.cpp
 	$(CC) $(FLAGS) parser.cpp
  
 test:
