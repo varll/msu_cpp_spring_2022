@@ -1,5 +1,5 @@
 CC=g++
-FLAGS=-std=c++2a -c -Wall -pedantic
+FLAGS=-std=c++2a -c -Wall -pedantic -Wextra -Werror
 TEST_LIBS=-lgtest_main -lgtest -lpthread
 
 

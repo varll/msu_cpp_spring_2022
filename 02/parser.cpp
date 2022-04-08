@@ -37,11 +37,11 @@ bool TokenParser::IsULLINT64(const std::string &token){
     return false;
 }
 
-void TokenParser::Parse(const std::string &text, std::vector<uint64_t> &numbers, std::vector<std::string> &strings){
+void TokenParser::Parse(const std::string &text){
     std::string token;
 
     if (start_callback != nullptr)
-        start_callback(numbers, strings);
+        start_callback();
 
     std::string::const_iterator i = text.begin();
     while(i != text.end()){
@@ -56,16 +56,16 @@ void TokenParser::Parse(const std::string &text, std::vector<uint64_t> &numbers,
         if(!token.empty()){
             if (IsULLINT64(token)){
                 if (digit_callback != nullptr)
-                    digit_callback(numbers, std::stoull(token));
+                    digit_callback(std::stoull(token));
             }
             else{
                 if (string_callback != nullptr)
-                    string_callback(strings, token);
+                    string_callback(token);
             }
             token.clear();
         }
     }
 
     if(end_callback != nullptr)
-        end_callback(numbers, strings);
+        end_callback();
 }
