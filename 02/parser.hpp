@@ -1,10 +1,11 @@
 #include <iostream>
 #include <functional>
 #include <string>
+#include <vector>
 
-using DigitTokenCallback = std::function<void(uint64_t)>;
-using StringTokenCallback = std::function<void(std::string)>;
-using Callback = std::function<void()>;
+using DigitTokenCallback = std::function<void(std::vector<uint64_t>&, uint64_t)>;
+using StringTokenCallback = std::function<void(std::vector<std::string>&, std::string)>;
+using Callback = std::function<void(std::vector<uint64_t>&, std::vector<std::string>&)>;
 
 class TokenParser
 {
@@ -29,5 +30,5 @@ public:
 
     bool IsULLINT64(const std::string &token);
 
-    void Parse(const std::string &text);
+    void Parse(const std::string &text, std::vector<uint64_t> &numbers, std::vector<std::string> &strings);
 };
