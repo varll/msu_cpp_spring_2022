@@ -120,7 +120,7 @@ BigInt BigInt::sub(const BigInt &x, const BigInt &y){
         else{
             offset = 0;
         }
-        result[x.size - 1 - i] = char(diff + '0');
+        result[x.size - 1 - i] = diff + '0';
     }
     for(size_t i = 0; i < x.size; i++){
         if (result[i] != '0'){
