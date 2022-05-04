@@ -51,10 +51,10 @@ Matrix& Matrix::operator*=(int32_t x){
 }
 
 Matrix Matrix::operator+(const Matrix &a){
-    if (rows_ != a.rows_ && cols_ != a. cols_){
+    if (rows_ != a.rows_ || cols_ != a.cols_){
         throw std::out_of_range("Wrong dimensions");
     }
-
+    
     Matrix result = Matrix(rows_, cols_);
 
     for(size_t i = 0; i < rows_; i++){
@@ -70,9 +70,16 @@ std::ostream& operator<<(std::ostream &os, const Matrix& a) {
 
     for (size_t i = 0; i < a.getRows(); i++){
         for(size_t j = 0; j < a.getCols(); j++){
-            os << a[i][j] << " ";
+            if (j != a.getCols()-1){
+                os << a[i][j] << " ";
+            }
+            else{
+                os << a[i][j];
+            }
         }
-        os << std::endl;
+        if (i != a.getRows()-1){
+            os << std::endl;
+        }
     }
         
     return os;
