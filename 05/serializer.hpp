@@ -19,14 +19,14 @@ public:
     {
     }
     
-    template <typename T> 
-    Error save(T& object)
+    template <typename T>
+	Error save(T& object)
 	{
 		return object.serialize(*this);
 	}
 
-	template <typename... ArgsT> 
-    Error operator()(ArgsT&&... args)
+	template <typename... ArgsT>
+	Error operator()(ArgsT&&... args)
 	{
 		return process(args...);
 	}
@@ -34,14 +34,14 @@ public:
 	
     
 private:
-	template <typename T> 
-    Error process(T&& val)
+	template <typename T>
+	Error process(T&& val)
 	{
 		return toStream(val);
 	}
 
-	template <typename T, typename... Args> 
-    Error process(T&& val, Args&&... args)
+	template <typename T, typename... Args>
+	Error process(T&& val, Args&&... args)
 	{
 		Error err = toStream(val);
 		if(err != Error::NoError)
@@ -52,8 +52,8 @@ private:
 		return process(std::forward<Args>(args)...);
 	}
 		  
-	template <typename T> 
-    Error toStream(T val)
+	template <typename T>
+	Error toStream(T val)
 	{
 		return Error::CorruptedArchive;
 	}
@@ -73,8 +73,8 @@ public:
     {
     }
     
-    template <typename T> 
-    Error load(T& object)
+    template <typename T>
+	Error load(T& object)
 	{
 		return object.deserialize(*this);
 	}
@@ -87,14 +87,14 @@ public:
 	
 private:
 	
-	template <typename T> 
-    Error process(T&& val)
+	template <typename T>
+	Error process(T&& val)
 	{
 		return fromStream(val);
 	}
 
-	template <typename T, typename... Args> 
-    Error process(T&& val, Args&&... args)
+	template <typename T, typename... Args>
+	Error process(T&& val, Args&&... args)
 	{
 		Error err = fromStream(val);
 		if(err != Error::NoError)
@@ -104,8 +104,8 @@ private:
 		return process(std::forward<Args>(args)...);
 	}
 		
-	template <typename T> 
-    Error fromStream(T val)
+	template <typename T>
+	Error fromStream(T val)
 	{
 		return Error::CorruptedArchive;
 	}
