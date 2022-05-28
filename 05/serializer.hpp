@@ -110,7 +110,7 @@ private:
 		return Error::CorruptedArchive;
 	}
 
-    Error fromStream(uint64_t& val);
+	Error fromStream(uint64_t& val);
 	Error fromStream(bool& val);
 
 };
