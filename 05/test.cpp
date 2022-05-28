@@ -21,7 +21,7 @@ struct Data
 };
 
 
-TEST(TestSerializer, TestRandom){
+TEST(TestSerializer, TestFromHomework){
 Data x { 1, true, 2};
 
 std::stringstream stream;
