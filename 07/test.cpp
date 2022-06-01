@@ -17,3 +17,8 @@ TEST(TestVector, TestRnadom){
     v.clear();
     ASSERT_TRUE(v.empty() == true);
 }
+
+int main(){
+    testing::InitGoogleTest();
+    return RUN_ALL_TESTS();
+}
