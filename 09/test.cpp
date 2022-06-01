@@ -22,7 +22,6 @@ void mega_test(const string &str, const string &teststr, size_t cnt) {
 }
 
 int main() {
-    srand(time(NULL));
     mega_test("f1.bin", "f2.bin", 12345678);
     ultra_sort("f1.bin", "out.bin");
     ifstream fin("f2.bin", ios::binary | ios::in);
